@@ -1,0 +1,24 @@
+{% extends 'base/base.html' %}
+{% block main_content %}
+    <header>
+
+        <!-- navigation bar -->
+        <h1><a class="home" href="{% url 'show index' %}">GamesPlay</a></h1>
+        <nav>
+            <a href="{% url 'show dashboard' %}">Dashboard</a>
+            <a href="{% url 'create game' %}">Create Game</a>
+            <a href="{% url 'show profile' %}">Profile</a>
+        </nav>
+    </header>
+
+    <!-- create game section -->
+    <section id="create-page" class="auth">
+        <!-- create game form -->
+        <form id="create" method="POST" action="{% url 'create game' %}">
+            {% csrf_token %}
+            {{ game_form }}
+            <input class="btn submit" type="submit" value="Create Game">
+        </form>
+    </section>
+
+{% endblock %}

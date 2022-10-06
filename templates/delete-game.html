@@ -1,0 +1,24 @@
+{% extends 'base/base.html' %}
+{% block main_content %}
+
+    <header>
+        <!-- navigation bar -->
+        <h1><a class="home" href="#">GamesPlay</a></h1>
+        <nav>
+            <a href="{% url 'show dashboard' %}">Dashboard</a>
+            <a href="{% url 'create game' %}">Create Game</a>
+            <a href="{% url 'show profile' %}">Profile</a>
+        </nav>
+    </header>
+
+    <!-- edit game form -->
+    <section id="delete-page" class="auth">
+        <h1>Delete Game</h1>
+        <form id="delete" method="POST" action="{% url 'delete game' id %}">
+            {% csrf_token %}
+            {{ game_form }}
+            <input class="btn submit" type="submit" value="Delete Game">
+        </form>
+    </section>
+
+{% endblock %}
